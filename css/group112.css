@@ -12,6 +12,10 @@ h1, h2, h3, h4 { font-weight: normal; border-left: 2px solid #5BC2E7; }
 header { padding-top: 80px; padding-bottom: 40px; text-align: center; background-color: white; }
 header h2 { line-height: 1; margin: 40px 0px 40px 0px; padding-left: 20px;
             font-size: 38px; display: inline-block; text-align: left;  border-left: none; }
+header a { color: #5BC2E7; text-decoration: none; margin: 0; border-bottom: 1px solid green; 
+           font-size: 38px; }
+header a:visited { color: #5BC2E7; border-bottom: 1px solid #5BC2E7; }
+header a:hover { background: rgba(71, 144, 256, 0.13); }
 
 footer { text-align: center; background-color: white; color: black; padding: 50px 0 100px 0; }
 
