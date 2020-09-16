@@ -1,0 +1,39 @@
+1. Компиляция программы.
+gcc -g -Wall -Wextra -Wfloat-equal -Werror -pedantic -std=c99 average.c -o prog
+
+2. Некорректные данные.
+
+2.1. Отсутствует входной файл.
+
+$ rm -f input.txt; ./prog; echo $?
+Can't open file 'input.txt'.
+255
+
+2.2. Пустой входной файл.
+
+$ rm -f input.txt; touch input.txt; ./prog; echo $?
+The input file is empty.
+255
+
+2.3. Входной файл содержит только мусор.
+
+$ echo "abc" > input.txt; ./prog; echo $?
+Wrong data in the input file.
+255
+
+2.4. Входной файл содержит числовую последовательность и в конце мусор.
+
+$ echo "1 2 3 abc" > input.txt; ./prog; echo $?
+Wrong data in the input file.
+255
+
+3. Корректные данные.
+
+$ echo "2" > input.txt; ./prog; echo $?; cat output.txt
+0
+2.000000
+
+$ echo "1 2 3 4 5" > input.txt; ./prog; echo $?; cat output.txt
+0
+3.000000
+
