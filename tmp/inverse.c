@@ -130,6 +130,7 @@ int calc_inverse_matrix(double *a, double *b, double *x, int *k, int n) {
     return 0;
 }
 
+void fill_matrix(double c, double d, double *a, int n);
 void fill_matrix(double c, double d, double *a, int n) {
     for(int i = 0; i < n; ++ i) {
         for(int j = 0; j < n; ++ j) {
@@ -198,7 +199,7 @@ int run_test(double c, double d, double *a, int *k, int n, double *t, double *t_
     }
 
     *t  = (en - st) / (double) CLOCKS_PER_SEC;
-    *t_ = (en_.tms_utime - st_.tms_utime) / (double) sysconf(_SC_CLK_TCK);
+    *t_ = (double) (en_.tms_utime - st_.tms_utime) / sysconf(_SC_CLK_TCK);
 
 
     *e = calc_accuracy(a_, x, b, n);
@@ -262,5 +263,7 @@ int main(int ac, char *av[]) {
     if(t1_) {
         printf("%.15e\n", t2_ / t1_);
     }
+
+    free(a);
 }
 
